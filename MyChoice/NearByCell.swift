@@ -15,9 +15,6 @@ class NearByCell:UITableViewCell,UITableViewDataSource,UITableViewDelegate{
     }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         var image:UIImageView = UIImageView(frame: CGRectMake(8, 8, 50, 50))
         image.backgroundColor = UIColor.blueColor()
         self.addSubview(image)

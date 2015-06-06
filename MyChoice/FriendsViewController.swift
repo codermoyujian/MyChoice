@@ -20,6 +20,9 @@ class FriendsViewController: UITableViewController {
         super.viewDidLoad()
         removeCellSeparator()
     }
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
@@ -28,13 +31,18 @@ class FriendsViewController: UITableViewController {
         //
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("FriendDetailCell") as UITableViewCell?
-        cell?.textLabel?.text = ""
-        cell?.detailTextLabel?.text = ""
-        return cell!
+        var cell = NSBundle.mainBundle().loadNibNamed("FriendCell", owner: self, options: nil)[0] as! UITableViewCell
+        if(indexPath.row == 0){
+            (cell.viewWithTag(2) as! UILabel).text = "莫宇剑"
+        }else if indexPath.row == 1{
+            (cell.viewWithTag(2) as! UILabel).text = "程序猿"
+        }else{
+            (cell.viewWithTag(2) as! UILabel).text = model.friends[indexPath.row - 2] as! String
+        }
+        return cell
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2 + model.friends.count
     }
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     }

@@ -27,7 +27,7 @@ class NearbyViewController: UITableViewController {
         //
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("NearByCell") as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier("NearByCell") as! UITableViewCell?
         if cell == nil{
             cell = NearByCell(frame: CGRectMake(0, 0, 320, 400))
             cell?.selectionStyle = UITableViewCellSelectionStyle.None

@@ -25,7 +25,7 @@ class MeDetailVC: UITableViewController ,UIImagePickerControllerDelegate,UINavig
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         picker.dismissViewControllerAnimated(true, completion: nil)
-        var image = info[UIImagePickerControllerEditedImage] as UIImage
+        var image = info[UIImagePickerControllerEditedImage] as! UIImage
         ttt?.image = image
         //http need
     }
@@ -57,7 +57,11 @@ class MeDetailVC: UITableViewController ,UIImagePickerControllerDelegate,UINavig
                     var alert = UIAlertController(title: "名称", message: "", preferredStyle: UIAlertControllerStyle.Alert) as UIAlertController
                     var action = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler:nil)
                     alert.addAction(action)
-                    action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                    action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: {
+                        (action: UIAlertAction!) -> Void in
+                        var text = alert.textFields![0] as! UITextField
+                        (self.Name?.viewWithTag(1) as! UILabel).text = text.text
+                    })
                     alert.addAction(action)
                     alert.addTextFieldWithConfigurationHandler{
                         (textField: UITextField!) -> Void in
@@ -68,9 +72,15 @@ class MeDetailVC: UITableViewController ,UIImagePickerControllerDelegate,UINavig
             //性别
             case 2:
                 var alert = UIAlertController(title: "性别", message: "", preferredStyle: UIAlertControllerStyle.Alert) as UIAlertController
-                var action = UIAlertAction(title: "男", style: UIAlertActionStyle.Default, handler: nil)
+                var action = UIAlertAction(title: "男", style: UIAlertActionStyle.Default, handler: {
+                    (action: UIAlertAction!) -> Void in
+                        (self.Sex?.viewWithTag(1) as! UILabel).text = "男"
+                })
                 alert.addAction(action)
-                action = UIAlertAction(title: "女", style: UIAlertActionStyle.Default, handler: nil)
+                action = UIAlertAction(title: "女", style: UIAlertActionStyle.Default, handler: {
+                    (action: UIAlertAction!) -> Void in
+                    (self.Sex?.viewWithTag(1) as! UILabel).text = "女"
+                })
                 alert.addAction(action)
                 Sex?.selected = false
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -81,7 +91,11 @@ class MeDetailVC: UITableViewController ,UIImagePickerControllerDelegate,UINavig
             var alert = UIAlertController(title: "个性签名", message: "", preferredStyle: UIAlertControllerStyle.Alert) as UIAlertController
             var action = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
             alert.addAction(action)
-            action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+            action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: {
+                (action: UIAlertAction!) -> Void in
+                var text = alert.textFields![0] as! UITextField
+                (self.GXQM?.viewWithTag(1) as! UILabel).text = text.text
+            })
             alert.addAction(action)
             alert.addTextFieldWithConfigurationHandler{
                 (textField:UITextField!) -> Void in

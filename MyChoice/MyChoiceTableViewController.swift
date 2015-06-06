@@ -17,12 +17,13 @@ class MyChoiceTableViewController: UITableViewController {
         temp.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = temp
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         removeCellSeparator()
     }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var viewHeight = tableView.bounds.height
         if indexPath.row == 0{
@@ -35,13 +36,13 @@ class MyChoiceTableViewController: UITableViewController {
             
             var temp:UILabel?
             temp = cell!.viewWithTag(1) as? UILabel
-            temp?.text = "0个选择"
+            temp?.text = NSString(format: "%d个选择", model.all) as String
             
             temp = cell!.viewWithTag(2) as? UILabel
-            temp?.text = "0开心"
+            temp?.text = NSString(format: "%d开心", model.good) as String
             
             temp = cell!.viewWithTag(3) as? UILabel
-            temp?.text = "0悲伤"
+            temp?.text = NSString(format: "%d悲伤", model.bad) as String
             var selectedColor = UIView()
             selectedColor.backgroundColor = UIColor.redColor()
             cell?.selectedBackgroundView = selectedColor
@@ -53,28 +54,76 @@ class MyChoiceTableViewController: UITableViewController {
                 cell = self.DecisionCell
                 DecisionCell = nil
             }
-            var selectedColor = UIView()
-            selectedColor.backgroundColor = UIColor.cyanColor()
-            cell?.selectedBackgroundView = selectedColor
             var temp:UILabel?
-            var tempIma = cell!.viewWithTag(1) as UIImageView
-            tempIma.image = UIImage(named: "firststeps")
-            
+            var tempIma = cell!.viewWithTag(1) as! UIImageView
+            tempIma.image = UIImage(named: (model.data.objectAtIndex(indexPath.row - 1) as! NSArray).objectAtIndex(2) as! String)
             temp = cell!.viewWithTag(2) as? UILabel
-            temp?.text = "我开始学习swift"
+            temp?.text = (model.data[indexPath.row - 1] as! NSArray)[0] as! String
             
             temp = cell?.viewWithTag(3) as? UILabel
-            temp?.text = "2015-01-24"
+            temp?.text = (model.data[indexPath.row - 1] as! NSArray)[1] as! String
             return cell!
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var choiceDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ChoiceDetailViewController") as UIViewController
-        self.navigationController?.pushViewController(choiceDetailVC, animated: true)
-        
+        var alert = UIAlertController(title: "事后", message: "", preferredStyle: UIAlertControllerStyle.Alert) as UIAlertController
+        var action = UIAlertAction(title: "开心", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) -> Void in
+            switch (model.data.objectAtIndex(indexPath.row - 1) as! NSArray).objectAtIndex(2) as! String{
+            case "b":
+                model.common--
+                model.good++
+                (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "a"
+            case "c":
+                model.bad--
+                model.good++
+                (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "a"
+            default:
+                break
+            }
+            tableView.reloadData()
+        })
+        alert.addAction(action)
+        action = UIAlertAction(title: "一般", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) -> Void in
+            (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0))?.viewWithTag(1) as! UIImageView).image = UIImage(named: "b")
+            switch (model.data.objectAtIndex(indexPath.row - 1) as! NSArray).objectAtIndex(2) as! String{
+            case "a":
+                model.good--
+                model.common++
+                (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "b"
+            case "c":
+                model.bad--
+                model.common++
+                (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "b"
+            default:
+                break
+            }
+            tableView.reloadData()
+        })
+        alert.addAction(action)
+        action = UIAlertAction(title: "不开心", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) -> Void in
+            (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0))?.viewWithTag(1) as! UIImageView).image = UIImage(named: "c")
+            switch (model.data.objectAtIndex(indexPath.row - 1) as! NSArray).objectAtIndex(2) as! String{
+                case "a":
+                    model.good--
+                    model.bad++
+                    (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "c"
+                case "b":
+                    model.common--
+                    model.bad++
+                    (model.data.objectAtIndex(indexPath.row - 1) as! NSMutableArray)[2] = "c"
+                default:
+                    break
+            }
+            tableView.reloadData()
+        })
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return model.data.count + 1
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var viewHeight = tableView.bounds.height

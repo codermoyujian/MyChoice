@@ -18,6 +18,11 @@
 		4F7938E41A78C2CC00B6C697 /* MyChoiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7938E31A78C2CC00B6C697 /* MyChoiceTableViewController.swift */; };
 		4FBB1EBF1A7A87C5009A26C5 /* ChoiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB1EBE1A7A87C5009A26C5 /* ChoiceDetailViewController.swift */; };
 		4FCC67031A808A97007CD7B0 /* NearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCC67021A808A97007CD7B0 /* NearbyViewController.swift */; };
+		4FDB42E21B1C9C5700564EC8 /* DataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB42E11B1C9C5700564EC8 /* DataPicker.swift */; };
+		4FDB42E41B1CA09400564EC8 /* QXSZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB42E31B1CA09400564EC8 /* QXSZ.swift */; };
+		4FDB42E61B1CB64F00564EC8 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB42E51B1CB64F00564EC8 /* model.swift */; };
+		4FDB42E81B1D9C7B00564EC8 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB42E71B1D9C7B00564EC8 /* FriendCell.xib */; };
+		4FDB42EA1B1DC0D700564EC8 /* searchFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB42E91B1DC0D700564EC8 /* searchFriend.swift */; };
 		4FDBA2B31A77EFDA00E19191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA2B21A77EFDA00E19191 /* AppDelegate.swift */; };
 		4FDBA2B51A77EFDA00E19191 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA2B41A77EFDA00E19191 /* TabBarController.swift */; };
 		4FDBA2B81A77EFDA00E19191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDBA2B61A77EFDA00E19191 /* Main.storyboard */; };
@@ -48,6 +53,11 @@
 		4F7938E31A78C2CC00B6C697 /* MyChoiceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChoiceTableViewController.swift; sourceTree = "<group>"; };
 		4FBB1EBE1A7A87C5009A26C5 /* ChoiceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceDetailViewController.swift; sourceTree = "<group>"; };
 		4FCC67021A808A97007CD7B0 /* NearbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyViewController.swift; sourceTree = "<group>"; };
+		4FDB42E11B1C9C5700564EC8 /* DataPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPicker.swift; sourceTree = "<group>"; };
+		4FDB42E31B1CA09400564EC8 /* QXSZ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QXSZ.swift; sourceTree = "<group>"; };
+		4FDB42E51B1CB64F00564EC8 /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		4FDB42E71B1D9C7B00564EC8 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
+		4FDB42E91B1DC0D700564EC8 /* searchFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchFriend.swift; sourceTree = "<group>"; };
 		4FDBA2AD1A77EFDA00E19191 /* MyChoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDBA2B11A77EFDA00E19191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FDBA2B21A77EFDA00E19191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +99,10 @@
 		4F6A722B1A7CB510005BE302 /* everyTab */ = {
 			isa = PBXGroup;
 			children = (
+				4FDB42E91B1DC0D700564EC8 /* searchFriend.swift */,
+				4FDB42E31B1CA09400564EC8 /* QXSZ.swift */,
+				4FDB42E11B1C9C5700564EC8 /* DataPicker.swift */,
+				4FDB42E51B1CB64F00564EC8 /* model.swift */,
 				4F6FD40D1A8678D100898100 /* MeDetailVC.swift */,
 				4F6FD4111A86798800898100 /* NewChoiceVC.swift */,
 				4F6FD40B1A86787300898100 /* MeViewController.swift */,
@@ -105,6 +119,7 @@
 				4F4F06941A922E750072B65C /* ChoiceCell.xib */,
 				4F34A3471A7938B00039B2CC /* TotalCell.xib */,
 				4F34A3451A7902A70039B2CC /* DecisionCell.xib */,
+				4FDB42E71B1D9C7B00564EC8 /* FriendCell.xib */,
 			);
 			name = CellXib;
 			sourceTree = "<group>";
@@ -260,6 +275,7 @@
 				4F34A3481A7938B00039B2CC /* TotalCell.xib in Resources */,
 				4FDBA2B81A77EFDA00E19191 /* Main.storyboard in Resources */,
 				4F34A3461A7902A70039B2CC /* DecisionCell.xib in Resources */,
+				4FDB42E81B1D9C7B00564EC8 /* FriendCell.xib in Resources */,
 				4FDBA2BD1A77EFDA00E19191 /* LaunchScreen.xib in Resources */,
 				4F4F06951A922E750072B65C /* ChoiceCell.xib in Resources */,
 				4FDBA2BA1A77EFDA00E19191 /* Images.xcassets in Resources */,
@@ -283,9 +299,13 @@
 				4FBB1EBF1A7A87C5009A26C5 /* ChoiceDetailViewController.swift in Sources */,
 				4F6FD40E1A8678D100898100 /* MeDetailVC.swift in Sources */,
 				4F6FD40C1A86787300898100 /* MeViewController.swift in Sources */,
+				4FDB42EA1B1DC0D700564EC8 /* searchFriend.swift in Sources */,
 				4FDBA2B51A77EFDA00E19191 /* TabBarController.swift in Sources */,
 				4F4F06921A922E120072B65C /* NearByCell.swift in Sources */,
+				4FDB42E21B1C9C5700564EC8 /* DataPicker.swift in Sources */,
 				4FDBA2B31A77EFDA00E19191 /* AppDelegate.swift in Sources */,
+				4FDB42E61B1CB64F00564EC8 /* model.swift in Sources */,
+				4FDB42E41B1CA09400564EC8 /* QXSZ.swift in Sources */,
 				4F7938E41A78C2CC00B6C697 /* MyChoiceTableViewController.swift in Sources */,
 				4F6A72281A7CA1A2005BE302 /* FriendsViewController.swift in Sources */,
 				4FCC67031A808A97007CD7B0 /* NearbyViewController.swift in Sources */,
